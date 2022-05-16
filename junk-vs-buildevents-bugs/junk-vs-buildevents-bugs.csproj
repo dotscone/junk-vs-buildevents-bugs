@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="echo &quot;==========&quot;&#xD;&#xA;&#xD;&#xA;call $(OutDir)\buildevent.UTF8withBOM.bat&#xD;&#xA;&#xD;&#xA;echo &quot;==========&quot;&#xD;&#xA;&#xD;&#xA;call $(OutDir)\buildevent.NewlineLF.bat&#xD;&#xA;&#xD;&#xA;echo &quot;==========&quot;&#xD;&#xA;&#xD;&#xA;" />
+  </Target>
+
+  <ItemGroup>
+    <None Update="buildevent.NewlineLF.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="buildevent.UTF8withBOM.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
